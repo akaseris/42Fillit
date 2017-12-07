@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_blocks.c                                :+:      :+:    :+:   */
+/*   add_lst.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akaseris <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/04 18:58:44 by akaseris          #+#    #+#             */
-/*   Updated: 2017/12/07 14:49:19 by jszabo           ###   ########.fr       */
+/*   Created: 2017/12/06 17:44:19 by jszabo            #+#    #+#             */
+/*   Updated: 2017/12/07 14:38:51 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_convert_blocks(char *str)
-{
-	int		i;
-	char	count;
+#include "fillit.h"
 
-	i = 0;
-	count = 'A';
-	while (str[i])
+tet_list	*add_lst(tet_list *list, int x, int y, char c)
+{
+	tet_list *tmp;
+
+	tmp = (tet_list *)malloc(sizeof(tet_list));
+	if (tmp)
 	{
-		if (str[i] == '#')
-			str[i] = count;
-		if (str[i] == '\n' && str[i + 1] == '\n')
-		{
-			count++;
-//			str[i + 1] = '*';
-		}
-		i++;
+		tmp->x = x;
+		tmp->y = y;
+		tmp->c = c;
+		tmp->next = list;
 	}
-	return (str);
+	return (tmp);
 }
