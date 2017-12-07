@@ -6,19 +6,63 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 12:10:17 by jszabo            #+#    #+#             */
-/*   Updated: 2017/12/07 14:27:25 by jszabo           ###   ########.fr       */
+/*   Updated: 2017/12/07 17:03:07 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
 #include "fillit.h"
 
+static tet_list	*ft_rev_list(tet_list *a)
+{
+	tet_list *b;
+	tet_list *tmp;
+
+	b = NULL;
+	while (a)
+	{
+		tmp = a->next;
+		b = add_lst(b, a->x, a->y, a->c);
+		free(a);
+		a = tmp;
+	}
+	return (b);
+}
+
+static tet_list *ft_calcdif(tet_list *a)
+{
+	tet_list	*tmp;
+	tet_list	*tmpdif;
+	int			i;
+
+	tmp = a;
+	tmpdif = a;
+	a = a->next;
+	while (a)
+	{
+		i = 0;
+		while (i < 3)
+		{
+			a->x = a->x - tmpdif->x;
+			a->y = a->y - tmpdif->y;
+			i++;
+			a = a->next;
+		}
+		if (a)
+		{
+			tmpdif = a;
+			a = a->next;
+		}
+	}
+	return (tmp);
+}
+
 tet_list	*convert_list(char *pieces_str)
 {
-	tet_list *tet_link;
-	int i;
-	int x;
-	int y;
+	tet_list	*tet_link;
+	int			i;
+	int			x;
+	int			y;
 
 	i = 0;
 	x = 1;
@@ -40,5 +84,7 @@ tet_list	*convert_list(char *pieces_str)
 		i++;
 		x++;
 	}
+	tet_link = ft_rev_list(tet_link);
+	tet_link = ft_calcdif(tet_link);
 	return (tet_link);
 }

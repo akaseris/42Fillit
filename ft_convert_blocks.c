@@ -6,7 +6,7 @@
 /*   By: akaseris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 18:58:44 by akaseris          #+#    #+#             */
-/*   Updated: 2017/12/07 14:49:19 by jszabo           ###   ########.fr       */
+/*   Updated: 2017/12/07 15:01:09 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,7 @@ char	*ft_convert_blocks(char *str)
 		if (str[i] == '#')
 			str[i] = count;
 		if (str[i] == '\n' && str[i + 1] == '\n')
-		{
 			count++;
-//			str[i + 1] = '*';
-		}
 		i++;
 	}
 	return (str);

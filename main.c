@@ -6,7 +6,7 @@
 /*   By: cfavero <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 15:49:58 by cfavero           #+#    #+#             */
-/*   Updated: 2017/12/07 14:51:16 by jszabo           ###   ########.fr       */
+/*   Updated: 2017/12/07 17:27:32 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int		main(int ac, char **av)
 {
 	char		*str;
-	char		*grid;
+	char		**grid;
 	int			pieces;
 	tet_list	*tet_link;
 
@@ -39,10 +39,14 @@ int		main(int ac, char **av)
 // these functions convert the string to list and then move up-left
 	tet_link = convert_list(str);
 	tet_link = move_upleft(tet_link);
-
 	grid = ft_create_grid(pieces);
-	printf("%s", str);
-// this shits out the coordinates (the list) on the screen
+	while (tet_link && tet_link->next->next->next->next)
+	{
+		printf("%d\n", ft_putblock(tet_link, grid));
+		tet_link = tet_link->next->next->next->next;
+	}
+	while (*grid)
+		printf("%s\n", *grid++);
 	print_list(tet_link);
 	return (0);
 }

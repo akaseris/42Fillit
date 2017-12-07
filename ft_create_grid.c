@@ -6,18 +6,19 @@
 /*   By: akaseris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 19:40:53 by akaseris          #+#    #+#             */
-/*   Updated: 2017/12/05 17:34:36 by akaseris         ###   ########.fr       */
+/*   Updated: 2017/12/07 15:21:14 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char	*ft_create_grid(int pieces)
+char	**ft_create_grid(int pieces)
 {
 	int		total;
 	int		i;
 	int		c;
 	char	*grid;
+	char	**tabgrid;
 
 	total = pieces * 4;
 	i = 1;
@@ -41,5 +42,6 @@ char	*ft_create_grid(int pieces)
 		c++;
 	}
 	grid[c] = '\0';
-	return (grid);
+	tabgrid = ft_strsplit(grid, '\n');
+	return (tabgrid);
 }
