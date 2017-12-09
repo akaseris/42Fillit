@@ -36,17 +36,17 @@ int		main(int ac, char **av)
 	}
 	str = ft_move(str);
 	str = ft_convert_blocks(str);
-// these functions convert the string to list and then move up-left
 	tet_link = convert_list(str);
 	tet_link = move_upleft(tet_link);
 	grid = ft_create_grid(pieces);
-	while (tet_link && tet_link->next->next->next->next)
-	{
-		printf("%d\n", ft_putblock(tet_link, grid));
-		tet_link = tet_link->next->next->next->next;
-	}
-	while (*grid)
+      	while (tet_link->next->next->next->next)
+       	{
+	  printf("%d\n", ft_putblock(tet_link, grid));
+	  tet_link = tet_link->next->next->next->next;
+       	}
+	printf("%d\n", ft_putblock(tet_link, grid));
+		while (*grid)
 		printf("%s\n", *grid++);
-	print_list(tet_link);
+			print_list(tet_link);
 	return (0);
 }

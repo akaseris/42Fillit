@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include "./libft/libft.h"
 //
 #include <stdio.h>
 
@@ -35,9 +36,13 @@ int		ft_putblock(tet_list *blocks, char **grid)
 	int			j;
 	char		c;
 	tet_list	*tmp;
+	int len;
 
+	len = 0;
 	c = blocks->c;
 	i = 0;
+	while (grid[len])
+		len++;
 	while (grid[i])
 	{
 		j = 0;
@@ -49,13 +54,13 @@ int		ft_putblock(tet_list *blocks, char **grid)
 				blocks = blocks->next;
 				while (blocks->c == c)
 				{
-					if (grid[i + blocks->y][j + blocks->x] != '.')
+				  if ((i + blocks->y > len - 1) || (j + blocks->x > len - 1) || grid[i + blocks->y][j + blocks->x] != '.')
 						break;
 					blocks = blocks->next;
 				}
 				if (blocks->c != c)
 				{
-					ft_fillgrid(grid, tmp, i, j);
+				  ft_fillgrid(grid, tmp, i, j);
 					return (1);
 				}
 				blocks = tmp;
