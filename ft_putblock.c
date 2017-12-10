@@ -6,16 +6,14 @@
 /*   By: akaseris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 15:12:24 by akaseris          #+#    #+#             */
-/*   Updated: 2017/12/07 17:24:48 by akaseris         ###   ########.fr       */
+/*   Updated: 2017/12/10 21:51:54 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "./libft/libft.h"
-//
-#include <stdio.h>
 
-static void	ft_fillgrid(char **grid, tet_list *a, int i, int j)
+static void		ft_fillgrid(char **grid, tet_list *a, int i, int j)
 {
 	int k;
 
@@ -30,19 +28,39 @@ static void	ft_fillgrid(char **grid, tet_list *a, int i, int j)
 	}
 }
 
-int		ft_putblock(tet_list *blocks, char **grid)
+static tet_list	*ft_isblockfit(tet_list *blocks, char **grid, int i, int j)
+{
+	char		c;
+	int			len;
+	tet_list	*tmp;
+
+	c = blocks->c;
+	tmp = blocks;
+	blocks = blocks->next;
+	len = 0;
+	while (grid[len])
+		len++;
+	while (blocks && blocks->c == c)
+	{
+		if ((i + blocks->y > len - 1) || (j + blocks->x > len - 1)
+				|| grid[i + blocks->y][j + blocks->x] != '.')
+			break ;
+		blocks = blocks->next;
+	}
+	if (blocks && blocks->c != c)
+		ft_fillgrid(grid, tmp, i, j);
+	return (blocks);
+}
+
+int				ft_putblock(tet_list *blocks, char **grid)
 {
 	int			i;
 	int			j;
 	char		c;
 	tet_list	*tmp;
-	int len;
 
-	len = 0;
 	c = blocks->c;
 	i = 0;
-	while (grid[len])
-		len++;
 	while (grid[i])
 	{
 		j = 0;
@@ -51,18 +69,9 @@ int		ft_putblock(tet_list *blocks, char **grid)
 			if (grid[i][j] == '.')
 			{
 				tmp = blocks;
-				blocks = blocks->next;
-				while (blocks->c == c)
-				{
-				  if ((i + blocks->y > len - 1) || (j + blocks->x > len - 1) || grid[i + blocks->y][j + blocks->x] != '.')
-						break;
-					blocks = blocks->next;
-				}
-				if (blocks->c != c)
-				{
-				  ft_fillgrid(grid, tmp, i, j);
+				blocks = ft_isblockfit(blocks, grid, i, j);
+				if (!blocks || blocks->c != c)
 					return (1);
-				}
 				blocks = tmp;
 			}
 			j++;

@@ -6,13 +6,14 @@
 /*   By: akaseris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 19:40:53 by akaseris          #+#    #+#             */
-/*   Updated: 2017/12/07 15:21:14 by akaseris         ###   ########.fr       */
+/*   Updated: 2017/12/10 22:03:07 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include <stdio.h>
 
-char	**ft_create_grid(int pieces)
+char	**ft_create_grid(int pieces, int inc)
 {
 	int		total;
 	int		i;
@@ -31,7 +32,9 @@ char	**ft_create_grid(int pieces)
 		}
 		i++;
 	}
-	grid = (char*)malloc(sizeof(*grid) * (total + i));
+	total = total + (2 * i * inc);
+	i = i + inc;
+	grid = (char*)malloc(sizeof(*grid) * (total + i + 1));
 	c = 0;
 	while (c < total + i)
 	{
@@ -42,6 +45,8 @@ char	**ft_create_grid(int pieces)
 		c++;
 	}
 	grid[c] = '\0';
+	printf("%s\n", grid);
 	tabgrid = ft_strsplit(grid, '\n');
+	free(grid);
 	return (tabgrid);
 }
