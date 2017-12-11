@@ -6,11 +6,12 @@
 /*   By: akaseris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/10 18:50:48 by akaseris          #+#    #+#             */
-/*   Updated: 2017/12/10 22:03:06 by akaseris         ###   ########.fr       */
+/*   Updated: 2017/12/11 17:08:19 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include "./libft/libft.h"
 #include <stdio.h>
 
 static char	**ft_resetgrid(char **grid, int pieces, int inc)
@@ -27,7 +28,7 @@ static char	**ft_resetgrid(char **grid, int pieces, int inc)
 	return (ft_create_grid(pieces, inc));
 }
 
-tet_list	*ft_solve(tet_list *blocks, char **grid, int pieces, int inc)
+char	**ft_solve(tet_list *blocks, char **grid, int pieces, int inc)
 {
 	tet_list	*tmp;
 
@@ -38,7 +39,6 @@ tet_list	*ft_solve(tet_list *blocks, char **grid, int pieces, int inc)
 		{
 			inc++;
 			grid = ft_resetgrid(grid, pieces, inc);
-			printf("%s\n", grid[1]);
 			return (ft_solve(tmp, grid, pieces, inc));
 		}
 		blocks = blocks->next->next->next->next;
@@ -47,9 +47,7 @@ tet_list	*ft_solve(tet_list *blocks, char **grid, int pieces, int inc)
 	{
 		inc++;
 		grid = ft_resetgrid(grid, pieces, inc);
-		printf("%d\n", inc);
-		print_list(tmp);
 		return (ft_solve(tmp, grid, pieces, inc));
 	}
-	return (blocks);
+	return (grid);
 }

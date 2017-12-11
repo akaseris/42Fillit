@@ -6,12 +6,11 @@
 /*   By: akaseris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 19:40:53 by akaseris          #+#    #+#             */
-/*   Updated: 2017/12/10 22:03:07 by akaseris         ###   ########.fr       */
+/*   Updated: 2017/12/11 17:00:55 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
 char	**ft_create_grid(int pieces, int inc)
 {
@@ -45,7 +44,6 @@ char	**ft_create_grid(int pieces, int inc)
 		c++;
 	}
 	grid[c] = '\0';
-	printf("%s\n", grid);
 	tabgrid = ft_strsplit(grid, '\n');
 	free(grid);
 	return (tabgrid);
