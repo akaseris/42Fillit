@@ -6,7 +6,7 @@
 /*   By: cfavero <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 15:49:58 by cfavero           #+#    #+#             */
-/*   Updated: 2017/12/11 17:08:01 by akaseris         ###   ########.fr       */
+/*   Updated: 2017/12/12 12:34:44 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@ int		main(int ac, char **av)
 	grid = ft_create_grid(pieces, 0);
 	tet_link = convert_list(str);
 	tet_link = move_upleft(tet_link);
-	grid = ft_solve(tet_link, grid, pieces, 0);
-	while (*grid)
-		printf("%s\n", *grid++);
-	//print_list(tet_link);
+//	grid = ft_solve(tet_link, grid, pieces, 0);
+//	while (*grid)
+//		printf("%s\n", *grid++);
+	tet_link = ft_switch_list(tet_link->next->next->next->next->next->next->next->next, tet_link->next->next->next->next, tet_link);
+	print_list(tet_link);
 	return (0);
 }
