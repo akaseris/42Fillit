@@ -6,7 +6,7 @@
 /*   By: akaseris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 15:12:24 by akaseris          #+#    #+#             */
-/*   Updated: 2017/12/11 17:18:53 by akaseris         ###   ########.fr       */
+/*   Updated: 2017/12/13 12:20:57 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static tet_list	*ft_isblockfit(tet_list *blocks, char **grid, int i, int j)
 	return (blocks);
 }
 
-int				ft_putblock(tet_list *blocks, char **grid)
+int				ft_putblock(tet_list *blocks, char **grid, int ign)
 {
 	int			i;
 	int			j;
@@ -68,9 +68,14 @@ int				ft_putblock(tet_list *blocks, char **grid)
 			if (grid[i][j] == '.')
 			{
 				tmp = blocks;
-				blocks = ft_isblockfit(blocks, grid, i, j);
-				if (!blocks || blocks->c != c)
-					return (1);
+				if (!ign)
+				{
+					blocks = ft_isblockfit(blocks, grid, i, j);
+					if (!blocks || blocks->c != c)
+						return (1);
+				}
+				else
+					ign--;
 				blocks = tmp;
 			}
 			j++;

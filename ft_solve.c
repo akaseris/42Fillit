@@ -6,7 +6,7 @@
 /*   By: akaseris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/10 18:50:48 by akaseris          #+#    #+#             */
-/*   Updated: 2017/12/11 17:08:19 by akaseris         ###   ########.fr       */
+/*   Updated: 2017/12/13 12:05:15 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	**ft_solve(tet_list *blocks, char **grid, int pieces, int inc)
 	tmp = blocks;
 	while (blocks->next->next->next->next)
 	{
-		if(!ft_putblock(blocks, grid))
+		if(!ft_putblock(blocks, grid, 0))
 		{
 			inc++;
 			grid = ft_resetgrid(grid, pieces, inc);
@@ -43,7 +43,7 @@ char	**ft_solve(tet_list *blocks, char **grid, int pieces, int inc)
 		}
 		blocks = blocks->next->next->next->next;
 	}
-	if(!ft_putblock(blocks, grid))
+	if(!ft_putblock(blocks, grid, 6))
 	{
 		inc++;
 		grid = ft_resetgrid(grid, pieces, inc);
