@@ -6,7 +6,7 @@
 /*   By: cfavero <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 15:19:05 by cfavero           #+#    #+#             */
-/*   Updated: 2017/12/12 12:33:31 by jszabo           ###   ########.fr       */
+/*   Updated: 2017/12/13 12:14:58 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,7 @@ tet_list	*convert_list(char *pieces_str);
 int			ft_putblock(tet_list *blocks, char **grid);
 char		**ft_solve(tet_list *blocks, char **grid, int pieces, int inc);
 tet_list	*ft_switch_list(tet_list *cur, tet_list *pre, tet_list *ori);
+char		**ft_erase_block(char **grid, char c);
+
 
 #endif

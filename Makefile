@@ -6,15 +6,15 @@
 #    By: akaseris <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/03 20:56:20 by akaseris          #+#    #+#              #
-#    Updated: 2017/12/11 16:56:33 by akaseris         ###   ########.fr        #
+#    Updated: 2017/12/13 12:15:11 by akaseris         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 
 SRC = main source ft_check_piece ft_check_pieces ft_convert_blocks \
-	  ft_create_grid ft_move print_list move_upleft convert_list add_lst \
-	  ft_putblock ft_solve
+		ft_create_grid ft_move print_list move_upleft convert_list add_lst \
+		ft_putblock ft_solve ft_switch_list ft_erase_block
 
 SRC_C = $(patsubst %,%.c,$(SRC))
 
