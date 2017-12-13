@@ -6,7 +6,7 @@
 /*   By: cfavero <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 15:19:05 by cfavero           #+#    #+#             */
-/*   Updated: 2017/12/13 12:14:58 by akaseris         ###   ########.fr       */
+/*   Updated: 2017/12/13 15:00:13 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ tet_list	*add_lst(tet_list *list, int x, int y, char c);
 void		print_list(tet_list *lst);
 tet_list	*move_upleft(tet_list *tet_link);
 tet_list	*convert_list(char *pieces_str);
-int			ft_putblock(tet_list *blocks, char **grid);
+int			ft_putblock(tet_list *blocks, char **grid, int ign);
 char		**ft_solve(tet_list *blocks, char **grid, int pieces, int inc);
 tet_list	*ft_switch_list(tet_list *cur, tet_list *pre, tet_list *ori);
 char		**ft_erase_block(char **grid, char c);
-
+char		**ft_solve_opt(tet_list *blocks, char **grid, int pieces, int ign, int inc);
 
 #endif

@@ -1,0 +1,14 @@
+
+
+
+
+
+
+
+
+
+loop:
+- try placing block until end of the list
+- if it fails:
+  - eraseblock(prev_block on list)
+  - 
