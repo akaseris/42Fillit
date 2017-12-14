@@ -6,57 +6,62 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 14:22:34 by jszabo            #+#    #+#             */
-/*   Updated: 2017/12/13 15:55:16 by jszabo           ###   ########.fr       */
+/*   Updated: 2017/12/13 17:51:15 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "./libft/libft.h"
-#include <stdio.h>
 
-static char **ft_resetgrid(char **grid, int pieces, int inc)
+static int	ft_countdots(char **grid, char c)
 {
-    int i;
+	int i;
+	int j;
+	int count;
 
-    i = 0;
-    while (grid[i])
-    {
-        free(grid[i]);
-        i++;
-    }
-    free(grid);
-    return (ft_create_grid(pieces, inc));
+	i = 0;
+	count = 0;
+	while (grid[i])
+	{
+		j = 0;
+		while (grid[i][j])
+		{
+			if (grid[i][j] == '.')
+				count++;
+			else if (grid[i][j] == c)
+				return (count);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }
 
-char	**ft_solve_opt(tet_list *blocks, char **grid, int pieces, int ign, int inc)
+int			ft_solve_opt(tet_list *blocks, tet_list *initial, char **grid, int ign)
 {
-	tet_list	*pre;
 	tet_list	*tmp;
+	int			i;
 
-	tmp = blocks;
+	i = 0;
 	while (blocks)
 	{
+		tmp = initial;
+		while (blocks->c != 'A' && tmp->c != (blocks->c) - 1)
+			tmp = tmp->next;
 		if (!ft_putblock(blocks, grid, ign))
 		{
-			if ((blocks->c) != 'A')
-			{
-				ign++;
-				grid = ft_erase_block(grid, ((blocks->c) - 1));
-				ft_printwordstables(grid);
-				return (ft_solve_opt(pre, grid, pieces, ign, inc));
-			}
-			else
-			{
-				ign = 0;
-				inc++;
-				grid = ft_resetgrid(grid, pieces, inc);
-				return (ft_solve_opt(tmp, grid, pieces, ign, inc)); 
-			}
+			if (blocks->c == 'A')
+				return (0);
+			ign = ft_countdots(grid, (blocks->c) - 1) + 1;
+			grid = ft_erase_block(grid, ((blocks->c) - 1));
+			return (ft_solve_opt(tmp, initial, grid, ign));
 		}
-		pre = blocks;
+		i++;
+		if (i == 1)
+			ign = 0;
 		if (!blocks->next->next->next->next)
 			break;
 		blocks = blocks->next->next->next->next;
 	}
-	return (grid);
+	return (1);
 }

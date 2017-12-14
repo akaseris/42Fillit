@@ -6,7 +6,7 @@
 /*   By: cfavero <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 15:19:05 by cfavero           #+#    #+#             */
-/*   Updated: 2017/12/13 15:00:13 by jszabo           ###   ########.fr       */
+/*   Updated: 2017/12/13 18:41:39 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdlib.h>
-# define BUF_SIZE 4096
+# define BUF_SIZE 1000
 
 typedef	struct		s_list2
 {
@@ -42,6 +42,6 @@ int			ft_putblock(tet_list *blocks, char **grid, int ign);
 char		**ft_solve(tet_list *blocks, char **grid, int pieces, int inc);
 tet_list	*ft_switch_list(tet_list *cur, tet_list *pre, tet_list *ori);
 char		**ft_erase_block(char **grid, char c);
-char		**ft_solve_opt(tet_list *blocks, char **grid, int pieces, int ign, int inc);
+int			ft_solve_opt(tet_list *blocks, tet_list *initial, char **grid, int ign);
 
 #endif

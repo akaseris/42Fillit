@@ -6,7 +6,7 @@
 /*   By: akaseris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 19:40:53 by akaseris          #+#    #+#             */
-/*   Updated: 2017/12/11 17:00:55 by akaseris         ###   ########.fr       */
+/*   Updated: 2017/12/13 19:08:51 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	**ft_create_grid(int pieces, int inc)
 		}
 		i++;
 	}
-	total = total + (2 * i * inc);
+	total = (i + inc) * (i + inc);
 	i = i + inc;
 	grid = (char*)malloc(sizeof(*grid) * (total + i + 1));
 	c = 0;
