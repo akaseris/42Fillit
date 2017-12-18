@@ -6,7 +6,7 @@
 /*   By: akaseris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 21:30:21 by akaseris          #+#    #+#             */
-/*   Updated: 2017/12/03 21:31:09 by akaseris         ###   ########.fr       */
+/*   Updated: 2017/12/18 14:21:58 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ static int	ft_pieces(char *s, int dot, int hash, int n)
 			i++;
 		}
 		pieces++;
-		if (!(dot == 12 && hash == 4))
+		if (!(dot == 12 && hash == 4) || (s[i] == '\0' && s[i -1] == '\n'
+			&& s[i - 2] == '\n'))
 			return (0);
 	}
 	return (pieces);

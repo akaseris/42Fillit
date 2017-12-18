@@ -6,13 +6,13 @@
 /*   By: akaseris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 15:12:24 by akaseris          #+#    #+#             */
-/*   Updated: 2017/12/13 18:28:57 by akaseris         ###   ########.fr       */
+/*   Updated: 2017/12/14 11:28:22 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static void		ft_fillgrid(char **grid, tet_list *a, int i, int j)
+static char		**ft_fillgrid(char **grid, tet_list *a, int i, int j)
 {
 	int k;
 
@@ -25,6 +25,7 @@ static void		ft_fillgrid(char **grid, tet_list *a, int i, int j)
 		k++;
 		a = a->next;
 	}
+	return (grid);
 }
 
 static tet_list	*ft_isblockfit(tet_list *blocks, char **grid, int i, int j)
@@ -47,7 +48,7 @@ static tet_list	*ft_isblockfit(tet_list *blocks, char **grid, int i, int j)
 		blocks = blocks->next;
 	}
 	if (!blocks || blocks->c != c)
-		ft_fillgrid(grid, tmp, i, j);
+		grid = ft_fillgrid(grid, tmp, i, j);
 	return (blocks);
 }
 

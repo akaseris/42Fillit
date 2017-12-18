@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 12:10:17 by jszabo            #+#    #+#             */
-/*   Updated: 2017/12/07 17:03:07 by akaseris         ###   ########.fr       */
+/*   Updated: 2017/12/18 17:35:03 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ tet_list	*convert_list(char *pieces_str)
 		i++;
 		x++;
 	}
+	tet_link = move_upleft(tet_link);
 	tet_link = ft_rev_list(tet_link);
 	tet_link = ft_calcdif(tet_link);
 	return (tet_link);

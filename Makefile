@@ -6,7 +6,7 @@
 #    By: akaseris <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/03 20:56:20 by akaseris          #+#    #+#              #
-#    Updated: 2017/12/13 18:51:48 by akaseris         ###   ########.fr        #
+#    Updated: 2017/12/14 10:57:43 by akaseris         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,6 @@ $(SRC_O):
 
 $(NAME): $(SRC_O)
 	@gcc -o $(NAME) $(SRC_O) -Llibft -lft
-	./fillit test
 
 clean:
 	@/bin/rm -f $(SRC_O)
