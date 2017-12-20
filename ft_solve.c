@@ -6,7 +6,7 @@
 /*   By: akaseris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/10 18:50:48 by akaseris          #+#    #+#             */
-/*   Updated: 2017/12/18 14:22:27 by akaseris         ###   ########.fr       */
+/*   Updated: 2017/12/20 13:12:10 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static char	**ft_resetgrid(char **grid, int pieces, int inc)
 	return (ft_create_grid(pieces, inc));
 }
 
-char	**ft_solve(tet_list *blocks, char **grid, int pieces, int inc)
+char		**ft_solve(t_tet *blocks, char **grid, int pieces, int inc)
 {
 	if (!ft_solve_opt(blocks, blocks, grid, 0))
 	{

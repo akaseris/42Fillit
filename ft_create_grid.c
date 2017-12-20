@@ -6,17 +6,30 @@
 /*   By: akaseris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 19:40:53 by akaseris          #+#    #+#             */
-/*   Updated: 2017/12/13 19:08:51 by akaseris         ###   ########.fr       */
+/*   Updated: 2017/12/20 11:04:41 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char	**ft_create_grid(int pieces, int inc)
+static char	*ft_str_grid(char *grid, int total, int i)
+{
+	int c;
+
+	c = 0;
+	while (c < total + i)
+	{
+		grid[c] = ((c + 1) % (i + 1) == 0 && c) ? '\n' : '.';
+		c++;
+	}
+	grid[c] = '\0';
+	return (grid);
+}
+
+char		**ft_create_grid(int pieces, int inc)
 {
 	int		total;
 	int		i;
-	int		c;
 	char	*grid;
 	char	**tabgrid;
 
@@ -34,17 +47,7 @@ char	**ft_create_grid(int pieces, int inc)
 	total = (i + inc) * (i + inc);
 	i = i + inc;
 	grid = (char*)malloc(sizeof(*grid) * (total + i + 1));
-	c = 0;
-	while (c < total + i)
-	{
-		if ((c + 1) % (i + 1) == 0 && c)
-			grid[c] = '\n';
-		else
-			grid[c] = '.';
-		c++;
-	}
-	grid[c] = '\0';
-	tabgrid = ft_strsplit(grid, '\n');
+	tabgrid = ft_strsplit(ft_str_grid(grid, total, i), '\n');
 	free(grid);
 	return (tabgrid);
 }

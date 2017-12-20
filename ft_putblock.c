@@ -6,13 +6,13 @@
 /*   By: akaseris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 15:12:24 by akaseris          #+#    #+#             */
-/*   Updated: 2017/12/14 11:28:22 by akaseris         ###   ########.fr       */
+/*   Updated: 2017/12/20 13:10:44 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static char		**ft_fillgrid(char **grid, tet_list *a, int i, int j)
+static char		**ft_fillgrid(char **grid, t_tet *a, int i, int j)
 {
 	int k;
 
@@ -28,11 +28,11 @@ static char		**ft_fillgrid(char **grid, tet_list *a, int i, int j)
 	return (grid);
 }
 
-static tet_list	*ft_isblockfit(tet_list *blocks, char **grid, int i, int j)
+static t_tet	*ft_isblockfit(t_tet *blocks, char **grid, int i, int j)
 {
-	char		c;
-	int			len;
-	tet_list	*tmp;
+	char	c;
+	int		len;
+	t_tet	*tmp;
 
 	c = blocks->c;
 	tmp = blocks;
@@ -52,14 +52,12 @@ static tet_list	*ft_isblockfit(tet_list *blocks, char **grid, int i, int j)
 	return (blocks);
 }
 
-int				ft_putblock(tet_list *blocks, char **grid, int ign)
+int				ft_putblock(t_tet *blocks, char **grid, int ign)
 {
-	int			i;
-	int			j;
-	char		c;
-	tet_list	*tmp;
+	int		i;
+	int		j;
+	t_tet	*tmp;
 
-	c = blocks->c;
 	i = 0;
 	while (grid[i])
 	{
@@ -69,14 +67,10 @@ int				ft_putblock(tet_list *blocks, char **grid, int ign)
 			if (grid[i][j] == '.')
 			{
 				tmp = blocks;
-				if (!ign)
-				{
-					blocks = ft_isblockfit(blocks, grid, i, j);
-					if (!blocks || blocks->c != c)
-						return (1);
-				}
-				else
-					ign--;
+				blocks = (!ign) ? ft_isblockfit(blocks, grid, i, j) : blocks;
+				if (!ign && (!blocks || blocks->c != tmp->c))
+					return (1);
+				ign = (ign) ? ign - 1 : ign;
 				blocks = tmp;
 			}
 			j++;

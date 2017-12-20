@@ -6,13 +6,12 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 14:22:34 by jszabo            #+#    #+#             */
-/*   Updated: 2017/12/18 17:28:32 by akaseris         ###   ########.fr       */
+/*   Updated: 2017/12/20 13:12:51 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "./libft/libft.h"
-#include <stdio.h>
 
 static int	ft_countdots(char **grid, char c)
 {
@@ -38,9 +37,10 @@ static int	ft_countdots(char **grid, char c)
 	return (0);
 }
 
-int			ft_solve_opt(tet_list *blocks, tet_list *initial, char **grid, int ign)
+int			ft_solve_opt(t_tet *blocks, t_tet *initial, char **grid,
+	int ign)
 {
-	tet_list	*tmp;
+	t_tet	*tmp;
 
 	while (blocks)
 	{
@@ -58,7 +58,7 @@ int			ft_solve_opt(tet_list *blocks, tet_list *initial, char **grid, int ign)
 		}
 		ign = 0;
 		if (!blocks->next->next->next->next)
-			break;
+			break ;
 		blocks = blocks->next->next->next->next;
 	}
 	return (1);
