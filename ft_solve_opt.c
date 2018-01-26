@@ -6,12 +6,11 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 14:22:34 by jszabo            #+#    #+#             */
-/*   Updated: 2017/12/20 13:12:51 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/01/11 17:55:09 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include "./libft/libft.h"
 
 static int	ft_countdots(char **grid, char c)
 {

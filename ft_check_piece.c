@@ -6,7 +6,7 @@
 /*   By: akaseris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 21:33:20 by akaseris          #+#    #+#             */
-/*   Updated: 2017/12/18 13:47:30 by akaseris         ###   ########.fr       */
+/*   Updated: 2018/01/23 18:22:41 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,5 @@ int		ft_check_piece(char *s)
 		if (count != 6 && count != 8)
 			return (0);
 	}
-	return (1);
+	return ((s[i - 1] == '\n') ? 1 : 0);
 }

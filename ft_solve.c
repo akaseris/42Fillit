@@ -6,12 +6,11 @@
 /*   By: akaseris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/10 18:50:48 by akaseris          #+#    #+#             */
-/*   Updated: 2017/12/20 13:12:10 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/01/11 17:53:09 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include "./libft/libft.h"
 
 static char	**ft_resetgrid(char **grid, int pieces, int inc)
 {

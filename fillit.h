@@ -6,7 +6,7 @@
 /*   By: cfavero <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 15:19:05 by cfavero           #+#    #+#             */
-/*   Updated: 2017/12/20 13:03:14 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/01/23 17:21:52 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ char				**ft_solve(t_tet *blocks, char **grid, int pieces,
 char				**ft_erase_block(char **grid, char c);
 int					ft_solve_opt(t_tet *blocks, t_tet *initial, char **grid,
 	int ign);
+char				**ft_strsplit(char const *s, char c);
 
 #endif

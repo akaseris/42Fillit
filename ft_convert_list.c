@@ -6,11 +6,10 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 12:10:17 by jszabo            #+#    #+#             */
-/*   Updated: 2017/12/20 13:07:59 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/01/11 17:52:12 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
 #include "fillit.h"
 
 static t_tet	*ft_rev_list(t_tet *a)

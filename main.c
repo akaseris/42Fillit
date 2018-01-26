@@ -6,16 +6,34 @@
 /*   By: cfavero <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 15:49:58 by cfavero           #+#    #+#             */
-/*   Updated: 2017/12/20 13:15:17 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/01/24 15:55:06 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
 #include "fillit.h"
 
 static int	ft_error(void)
 {
 	write(1, "error\n", 6);
+	return (0);
+}
+
+static void	ft_putstr(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+}
+
+static int	ft_usage()
+{
+	ft_putstr("usage: fillit target_file\n");
+	ft_putstr("Accepts ONE argument only.\n");
 	return (0);
 }
 
@@ -27,7 +45,7 @@ int			main(int ac, char **av)
 	t_tet		*tet_link;
 
 	if (ac != 2)
-		return (0);
+		return (ft_usage());
 	str = ft_source(av[1]);
 	if (str == 0)
 		return (ft_error());
